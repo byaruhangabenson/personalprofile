@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Profile</title>
+  <style>				   
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+	:root {
+		--primary-color: #ff7613;
+		--text-color: #727171;
+	}
+	html {
+		font-size: 10px;
+	}
+	body {
+		font-family: Inter, sans-serif;
+		background-color: black;
+		color: white;
+	}
+
+	/* common styles */
+	img {
+		width: 100%;
+	}
+	a {
+		text-decoration: none;
+		color: white;
+	}
+	.description {
+		margin-top: 1rem;
+		font-size: 1.5rem;
+		font-weight: 400;
+		color: var(--text-color);
+	}
+	.title {
+		color: var(--primary-color);
+		font-weight: 700;
+		font-size: 2rem;
+		text-transform: uppercase;
+	}
+	.item_preTitle {
+		font-size: 1.4rem;
+		color: var(--text-color);
+		font-weight: 300;
+	}
+	.item_title {
+		font-size: 1.6rem;
+		color: white;
+		font-weight: 500;
+		margin: 0.8rem 0;
+	}
+	.item_subtitle {
+		font-size: 1.4rem;
+		color: var(--text-color);
+		font-weight: 400;
+	}
+
+	/* layouts */
+	.container {
+		max-width: 1000px;
+		width: 90%;
+		margin: 0 auto;
+		display: grid;
+		padding: 5rem;
+		background: #070707;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+	}
+	@media only screen and (max-width: 768px) {
+		.container {
+			width: 100%;
+			grid-template-columns: 1fr;
+			padding: 3rem;
+			gap: 7rem;
+		}
+	}
+	.profile {
+		grid-column: 1 / -1;
+		margin-bottom: 2rem;
+	}
+	.group-1,
+	.group-2 {
+		display: flex;
+		flex-direction: column;
+		gap: 5rem;
+	}
+	.group-3 {
+		max-width: 700px;
+		width: 100%;
+		margin: 0 auto;
+		grid-column: 1/-1;
+		display: flex;
+		flex-direction: row;
+		gap: 5rem;
+	}
+	.group-3 > div {
+		flex: 1;
+	}
+	@media only screen and (max-width: 768px) {
+		.profile {
+			margin-bottom: 0;
+		}
+		.group-3 {
+			flex-direction: column;
+		}
+	}
+
+	/* profile */
+	.profile_container {
+		display: flex;
+		gap: 2rem;
+	}
+	.profile_profileImg {
+		max-width: 400px;
+	}
+	.profile_name_firstName {
+		color: white;
+		font-weight: 200;
+		font-size: clamp(2rem, 8vw, 4rem);
+		text-transform: uppercase;
+		display: block;
+		margin-bottom: -0.8rem;
+	}
+	.profile_name_lastName {
+		color: var(--primary-color);
+		font-weight: 700;
+		font-size: clamp(2.5rem, 15vw, 7rem);
+		text-transform: uppercase;
+		display: block;
+	}
+	.profile_title {
+		font-size: 1.5rem;
+		font-weight: 400;
+		text-transform: uppercase;
+	}
+	.downloadBtn {
+		display: block;
+		text-decoration: underline;
+		font-size: 1.6rem;
+		margin-top: 1rem;
+	}
+	.downloadBtn:hover {
+		color: var(--primary-color);
+	}
+	@media only screen and (max-width: 768px) {
+		.profile_container {
+			flex-direction: column;
+		}
+	}
+
+	/* Expertise */
+	.skills_list {
+		margin-top: 1rem;
+		margin-left: 2rem;
+		line-height: 2;
+	}
+
+	/* Ref  */
+	.ref_item {
+		margin-top: 2rem;
+	}
+	.ref_name {
+		font-size: 1.6rem;
+		font-weight: 700;
+	}
+
+	/* eduction */
+	.edu_item {
+		margin-top: 2rem;
+	}
+
+	/* certification */
+	.certification_item {
+		margin-top: 2rem;
+	}
+	/* exp */
+	.exp_item {
+		margin-top: 2rem;
+	}
+
+	/* awards */
+	.awards_item {
+		margin-top: 2rem;
+	}
+	/* Interests */
+	.interest_items {
+		margin-top: 2rem;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 2rem;
+	}
+	.interest_item {
+		font-size: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		color: var(--text-color);
+	}
+	.interest_item svg {
+		width: 2rem;
+	}
+
+	/* socials */
+	.social_items {
+		margin-top: 2rem;
+	}
+	.social_item {
+		margin-top: 1.5rem;
+		font-size: 1.5rem;
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: flex-start;
+		color: var(--text-color);
+	}
+	.social_item:hover {
+		color: var(--primary-color);
+	}
+	.social_item svg {
+		width: 2rem;
+	}
+
+	hr {
+		grid-column: 1/-1;
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 5rem;
+		margin-bottom: 1rem;
+		border: none;
+		border-top: 2px solid rgba(128, 128, 128, 0.229);
+	}
+	@media only screen and (max-width: 768px) {
+		hr {
+			margin: 0 auto;
+		}
+	}
+  </style>
+  
+</head>
+
+<body>
+  <div class="container">
+    <div class="profile">
+        <div>
+          <h1 class="profile_name">
+            <span class="profile_name_firstName">Benson Mworozi</span>
+            <span class="profile_name_lastName">Byaruhanga</span>
+          </h1>
+          <p class="profile_title">Uganda Christian University Mukono</p>
+		  <p class="description profile_description"> Masters of Information Technology </p>
+		  <BR>
+        <h3 class="title">Professional profile</h3>
+          <p class="description profile_description">
+            My previous work experience in data management and seccurity, network management, software development, Uganda Police Force 
+			CCTV Monitoring, system analysis and education background in Information Technology has equipped me with 
+			knowledge to manage projects and implement systematic business processes to gather/analyze information 
+			regards to the progress of a project towards achieving its targets and goals.
+          </p>
+        </div>
+    </div>
+    <div class="group-1">
+      <div class="skills">
+        <h3 class="title">Expertise</h3>
+        <ul class="skills_list description">
+          <li>Excellent Network Security Control </li>
+          <li>Software debugging and development in HTML CSS</li>
+          <li>Knowledge of Operating Systems and Virtual Machines</li>
+          <li>Troubleshooting networks and infrastructure.</li>
+          <li>Reports, Proposal and Project writing skills.</li>
+        </ul>
+      </div>
+      <div class="skills">
+        <h3 class="title">Projects</h3>
+        <ul class="skills_list description">
+          <li>Information security:Network Security, having the right technology—such as firewalls and antivirus programs</li>
+          <li>The Internet of Things (IoT):Security emphasizes protecting connected devices and networks over the Internet,</li>
+		</ul>
+      </div>      <div class="ref">
+        <h3 class="title">Reference</h3>
+        <div class="ref_item">
+          <h4 class="ref_name">ASP Kiyombo Daison</h4>
+          <p class="description">Ag. Commissioner of Police IT & IM Directorate of ICT </p>
+		  <p class="description">Email: daison@upf.go.ug</p>	
+
+        </div>
+        <div class="ref_item">
+          <h4 class="ref_name">ASP Etuket Vicent</h4>
+          <p class="description"> Ag. Commissioner of Police CCTV Directorate of ICT Uganda Police Force </p>
+		  <p class="description">Email: etuket@upf.go.ug</p>	
+        </div>
+      </div>
+
+      <div class="edu">
+        <h3 class="title">Education</h3>
+        <div class="edu_item">
+          <p class="item_preTitle">2004 - 2007</p>
+          <h4 class="item_title">Bachelors of Information Technology</h4>
+          <p class="item_subtitle">
+            Makerere University  
+          </p>
+        </div>
+        <div class="edu_item">
+          <p class="item_preTitle">2002- 2003</p>
+          <h4 class="item_title">Uganda Advanced Certificate of Education  </h4>
+          <p class="item_subtitle">
+            Lake Mburo Secondary School 
+          </p>
+        </div>
+        <div class="edu_item">
+          <p class="item_preTitle">1998-2001</p>
+          <h4 class="item_title">Uganda Certificate of Education  </h4>
+          <p class="item_subtitle">
+            Lake Mburo Secondary School 
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="group-2">
+	      <div class="certification">
+        <h3 class="title">certification</h3>
+        <div class="certification_item">
+          <p class="item_preTitle">2018</p>
+          <h4 class="item_title">Cisco Certified Network Associate</h4>
+          <p class="description">
+            The CCNA is designed to validate your knowledge on fundamental networking concepts often requested in 
+			networking roles in IT positions.
+          </p>
+        </div>
+      </div>
+      <div class="exp">
+        <h3 class="title">Experience</h3>
+        <div class="exp_item">
+          <p class="item_preTitle">2012 - present</p>
+          <h4 class="item_title">Uganda Police Force, Directorate of Information Technology</h4>
+          <p class="item_subtitle">Head of Software Development Uint</p>
+          <p class=" description">Researching, designing, implementing, and managing software programs.</p>	
+		  <p class=" description">Analyze user requirements and convert requirements to design documents.</p>	
+		  <p class=" description">Identifying areas for modification in existing programs and subsequently 
+			developing these modifications. </p>	
+		  <p class=" description">Developing quality assurance procedures.</p>
+
+          </p>
+        </div>
+        <div class="exp_item">
+          <p class="item_preTitle">2009 - 2011</p>
+          <h4 class="item_title">Medical Team International-Uganda</h4>
+          <p class="item_subtitle">Technical Support Assistant </p>
+          <p class=" description">Participate in development and creation of database as requested. </p>	
+		  <p class=" description">Advocate for the needs of the users of mobile and web applications</p>	
+		  <p class=" description">Monitor and maintain the Local Area Networks, printers, VSAT and computers </p>	
+		  <p class=" description">Generate weekly and monthly data reports in accordance with the set reporting standards.</p>
+        </div>
+      </div>
+      <div class="awards">
+        <h3 class="title">Awards</h3>
+        <div class="awards_item">
+          <p class="item_preTitle">2019</p>
+          <h4 class="item_title">Certificate in Cyber Security and CCTV Evidence Handling</h4>
+          <p class=" description"> Uganda Police Force</p>
+        </div>
+      </div>
+
+      <div class="interest">
+        <h3 class="title">Interest</h3>
+        <div class="interest_items">
+          <div class="interest_item">
+            <i data-feather="music"></i>
+            <span>Music</span>
+          </div>
+          <div class="interest_item">
+            <i data-feather="book"></i>
+            <span>Books</span>
+          </div>
+          <div class="interest_item">
+            <i data-feather="map"></i>
+            <span>Travel</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <hr>
+    <div class="group-3">
+      <div class="contact">
+        <h3 class="title">Contact</h3>
+        <div class="contact_info">
+          <p class="description">
+            Kampala, Naguru
+          </p>
+          <p class="description">
+            +256 787 160957
+          </p>
+          <p class="description">
+            BensonByaruhanga256@gmail.com
+          </p>
+        </div>
+      </div>
+      <div class="social">
+        <h3 class="title">Socials</h3>
+        <div class="social_items">
+          <a href="https://github.com/byaruhangabenson" target="_b" class="social_item">
+            <i data-feather="github"></i>
+            <span>GITHUB: /byaruhangabenson</span>
+          </a>
+		 
+          <a href="https://twitter.com/" target="_blank" class="social_item">
+            <i data-feather="twitter"></i>
+            <span> TWITTER: /byaruhangabenson256</span>
+          </a>
+		  
+          <a href="https://www.linkedin.com/" target="_blank" class="social_item">
+            <i data-feather="linkedin"></i>
+            <span>LINKEDIN: /byaruhangabenson256</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    feather.replace()
+  </script>
+</body>
+
+</html>
