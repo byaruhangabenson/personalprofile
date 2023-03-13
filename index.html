@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Profile</title>
-  <style>				   
+  <style type="text/css">					   
 	* {
 		padding: 0;
 		margin: 0;
@@ -73,14 +73,6 @@
 		grid-template-columns: 1fr 1fr;
 		gap: 4rem;
 	}
-	@media only screen and (max-width: 768px) {
-		.container {
-			width: 100%;
-			grid-template-columns: 1fr;
-			padding: 3rem;
-			gap: 7rem;
-		}
-	}
 	.profile {
 		grid-column: 1 / -1;
 		margin-bottom: 2rem;
@@ -102,14 +94,6 @@
 	}
 	.group-3 > div {
 		flex: 1;
-	}
-	@media only screen and (max-width: 768px) {
-		.profile {
-			margin-bottom: 0;
-		}
-		.group-3 {
-			flex-direction: column;
-		}
 	}
 
 	/* profile */
@@ -139,20 +123,6 @@
 		font-size: 1.5rem;
 		font-weight: 400;
 		text-transform: uppercase;
-	}
-	.downloadBtn {
-		display: block;
-		text-decoration: underline;
-		font-size: 1.6rem;
-		margin-top: 1rem;
-	}
-	.downloadBtn:hover {
-		color: var(--primary-color);
-	}
-	@media only screen and (max-width: 768px) {
-		.profile_container {
-			flex-direction: column;
-		}
 	}
 
 	/* Expertise */
@@ -238,11 +208,6 @@
 		margin-bottom: 1rem;
 		border: none;
 		border-top: 2px solid rgba(128, 128, 128, 0.229);
-	}
-	@media only screen and (max-width: 768px) {
-		hr {
-			margin: 0 auto;
-		}
 	}
   </style>
   
